@@ -41,24 +41,30 @@ class LinkList:
             print(copyhead.val)
         else:
             print("No Vaule")
+    # 找尋與Value相同的前一個Node節點(程式錯誤)
     def searchB1(self,val):
         copyhead = self.head
-        while(copyhead.next.val != val):
-            copyhead = copyhead.next
-        return copyhead
+        if(copyhead.next != None):
+            while(copyhead.next.val != val):
+                copyhead = copyhead.next
+            return copyhead
+        else:
+            print('Not found this node.')
+    # 在index的位置新增數值(未設立防呆)
     def insert(self,index,val):
-        ind = 0
+        calInd = 0
         copyhead = self.head
-        while(ind != index):
-            ind=ind+1
+        while(calInd != index):
+            calInd=calInd+1
             copyhead = copyhead.next
-        if(ind == 0):
+        if(calInd == 0):
             self.add(val)
         else:
             h = Node(val)
             b1 = self.searchB1(copyhead.val)
             h.next= copyhead
             b1.next = h
+    # 搜尋value數值相同的 Node 
     def search(self,val):
         copyhead = self.head
         while(copyhead.val !=val):
@@ -70,6 +76,6 @@ class LinkList:
         copyhead = self.head
         while(copyhead.next.val != pos.val):
             copyhead = copyhead.next
-        copyhead = copyhead.next.next
+        copyhead.next = copyhead.next.next
 lin = LinkList()
 lin.add(2)
